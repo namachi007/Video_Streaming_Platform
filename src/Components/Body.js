@@ -5,9 +5,9 @@ import { MainContainer } from "./MainContainer";
 
 export const Body = () => {
   return (
-    <div className='flex'>
-        <Sidebar />
-        <MainContainer />
+    <div className="flex w-full h-full  bg-black">
+      <Sidebar />
+      <MainContainer />
     </div>
-  )
+  );
 }

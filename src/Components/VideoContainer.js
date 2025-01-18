@@ -2,6 +2,6 @@ import React from 'react'
 
 export const VideoContainer = () => {
   return (
-    <div>VideoContainer</div>
+    <div className='h-100% bg-black'>VideoContainer</div>
   )
 }

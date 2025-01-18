@@ -1,30 +1,42 @@
 import React from 'react'
+import {  useDispatch } from "react-redux";
+import { toggleMenu } from '../utils/menuSlice';
+
 
 export const Header = () => {
 
+ 
+  const dispatch = useDispatch();
+
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  }
 
   return (
-    <div className="flex justify-around w-full h-13 py-3">
+    <div className="flex text-white justify-around w-full h-13 py-3 ">
       <div className="Youtube  w-1/3  flex space-x-1 pl-9 mt-1 ">
-        <div className="mr-6">
+        <div onClick={toggleMenuHandler} className="mr-4 cursor-pointer hover:bg-gray-800 h-8 rounded-xl text-center w-8 p-2  ">
           <img
             src="/hamburger-menu.ico"
             alt="Bellicon"
             className="mr-2"
-            width="22"
+            width="18"
             height="20"
           />
         </div>
-        <div className="youtubeLogo flex-shrink-0 w-6 ">
+        <div className="youtubeLogo flex-shrink-0 mt-1  cursor-pointer">
           <img
             src="/ytLogo.ico"
             alt="Favicon"
             className="mr-"
-            width=""
-            height=""
+            width="20"
+            height="10"
           />
         </div>
-        <div className="text-white text-lg  font-semibold"> YouTube</div>
+        <div className="text-white text-lg  font-semibold  cursor-pointer">
+          {" "}
+          YouTube
+        </div>
       </div>
 
       <div className="searchInput w-1/3 ">
@@ -62,7 +74,7 @@ export const Header = () => {
                 height="16"
                 fill="currentColor"
                 class="bi bi-plus-lg"
-                className='mr-1'
+                className="mr-1"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -74,8 +86,6 @@ export const Header = () => {
             </button>
           </div>
 
-
-
           <div className="w-32 cursor-pointer ">
             <img
               src="/bell_icon.ico"
@@ -85,8 +95,6 @@ export const Header = () => {
               height="0"
             />
           </div>
-
-
 
           <div className="container flex ">
             <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
