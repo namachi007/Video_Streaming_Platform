@@ -61,13 +61,13 @@ export const VideoCard = ({info}) => {
   
 
   return (
-    <div className="my-4 mr-4 w-[100%] ">
+    <div className="  w-[100%] ">
       <div className="">
         <div className=" rounded-lg h-auto ">
           <img
             src={maxres?.url || high?.url}
             alt="video_thumbnail"
-            className="rounded-lg w-[415px] h-[240px] "
+            className="rounded-lg w-[410px] h-[240px] "
           />
         </div>
         <div className="flex pt-2">
