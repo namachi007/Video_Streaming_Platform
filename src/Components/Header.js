@@ -86,7 +86,7 @@ export const Header = () => {
             </button>
           </div>
 
-          <div className="w-32 cursor-pointer ">
+          <div className="w-32 mt-0.5 cursor-pointer ">
             <img
               src="/bell_icon.ico"
               alt="Bellicon"
