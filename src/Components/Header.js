@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {  useDispatch } from "react-redux";
 import { toggleMenu } from '../utils/menuSlice';
 import { Link } from 'react-router-dom';
+import { YOUTUBE_SEARCH_API } from '../utils/constants';
 
 
 export const Header = () => {
+  const [search, setSearch] = useState("");
+  
 
+  useEffect(()=> {
+    const timer = setTimeout(() => getSearch(),300); ;
+
+    return () => clearTimeout(timer);
+  },[search]);
+
+  const getSearch = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + search);
+    const json = await data.json();
+    console.log(json[1]);
+  }
  
   const dispatch = useDispatch();
 
@@ -53,6 +67,8 @@ export const Header = () => {
               className="form-control rounded-l-2xl"
               placeholder="Search"
               aria-label="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             ></input>
           </form>
           <button className="w-45 bg-slate-800 rounded-r-2xl ">
