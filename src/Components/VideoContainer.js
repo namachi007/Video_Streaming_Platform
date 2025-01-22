@@ -21,8 +21,12 @@ export const VideoContainer = () => {
   return (
     <div className="w-full m-0 p-0 bg-black flex flex-wrap">
       {videos.map((video) => (
-        <Link to={"/watch?v=" + video.id} className="w-[31.5%] mr-4 my-4">
-          <VideoCard key={video.id} info={video} />
+        <Link
+          key={video.id}
+          to={"/watch?v=" + video.id}
+          className="w-[31.5%] mr-4 my-4"
+        >
+          <VideoCard info={video} />
         </Link>
       ))}
     </div>
