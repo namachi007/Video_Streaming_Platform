@@ -7,6 +7,7 @@ import { YOUTUBE_SEARCH_API } from '../utils/constants';
 
 export const Header = () => {
   const [search, setSearch] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   
 
   useEffect(()=> {
@@ -19,6 +20,7 @@ export const Header = () => {
     const data = await fetch(YOUTUBE_SEARCH_API + search);
     const json = await data.json();
     console.log(json[1]);
+    setSuggestions(json[1]);
   }
  
   const dispatch = useDispatch();
@@ -43,15 +45,15 @@ export const Header = () => {
           />
         </div>
         {/* <Link to="/"> */}
-          <div className="youtubeLogo flex-shrink-0 mt-1  cursor-pointer">
-            <img
-              src="/ytLogo.ico"
-              alt="Favicon"
-              className="mr-"
-              width="20"
-              height="10"
-            />
-          </div>
+        <div className="youtubeLogo flex-shrink-0 mt-1  cursor-pointer">
+          <img
+            src="/ytLogo.ico"
+            alt="Favicon"
+            className="mr-"
+            width="20"
+            height="10"
+          />
+        </div>
         {/* </Link> */}
         <div className="text-white text-lg  font-semibold  cursor-pointer">
           {" "}
@@ -61,10 +63,10 @@ export const Header = () => {
 
       <div className="searchInput w-1/3 ">
         <div className="flex">
-          <form className="w-[75%]" role="search">
+          <form className="w-[75%] " role="search">
             <input
               type="search"
-              className="form-control rounded-l-2xl"
+              className="form-control rounded-l-2xl p-1 px-3"
               placeholder="Search"
               aria-label="Search"
               value={search}
@@ -84,6 +86,28 @@ export const Header = () => {
             </svg>
           </button>
         </div>
+        {suggestions.length === 0 ? null : (
+          <div className="absolute searchResults rounded-2xl bg-gray-950   py-3 text-white w-[25%]">
+            <ul className="">
+              {suggestions.map((suggestion) => (
+                <li key={suggestion} className="flex items-center space-x-3 py-1.5 hover:bg-gray-600  cursor-pointer px-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="14"
+                    fill="currentColor"
+                    class="bi bi-search"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                  </svg>
+                  <span>{suggestion}</span>
+                </li>
+              ))}
+              ;
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className="userIcon w-1/3 flex justify-end ">
