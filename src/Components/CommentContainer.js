@@ -3,14 +3,14 @@ import { CommentsSection } from './CommentsSection';
 
 export const CommentContainer = () => {
   return (
-    <div className="px-28 mt-10 pb-10 w-[74%]">
+    <div className="px-28 mt-10 pb-10  w-[73%] ">
       <div>
         <div className="flex items-center ">
           <h1 className="text-2xl font-bold">Comments</h1>
           <button className="text-blue-500 ml-10">Sort by</button>
         </div>
-        <div className="flex flex-col justify-center">
-          <div className="flex items-center py-6 ">
+        <div className="flex flex-col justify-center w-full">
+          <div className="flex items-center py-6 w-full">
             <img
               src="https://avatars.githubusercontent.com/u/144411164?v=4"
               alt="profile"
