@@ -55,21 +55,22 @@ export const Header = () => {
             height="20"
           />
         </div>
-        {/* <Link to="/"> */}
-        <div className="youtubeLogo flex-shrink-0 mt-1  cursor-pointer">
-          <img
-            src="/ytLogo.ico"
-            alt="Favicon"
-            className="mr-"
-            width="20"
-            height="10"
-          />
-        </div>
-        {/* </Link> */}
-        <div className="text-white text-lg  font-semibold  cursor-pointer">
-          {" "}
-          YouTube
-        </div>
+        <a href="/" className="flex space-x-1">
+          <div className="youtubeLogo flex-shrink-0 mt-1  cursor-pointer">
+            <img
+              src="/ytLogo.ico"
+              alt="Favicon"
+              className="mr-"
+              width="20"
+              height="10"
+            />
+          </div>
+
+          <div className="text-white text-lg  font-semibold  cursor-pointer">
+            {" "}
+            YouTube
+          </div>
+        </a>
       </div>
 
       <div className="searchInput w-1/3 ">
@@ -101,7 +102,10 @@ export const Header = () => {
           <div className="absolute searchResults rounded-2xl bg-gray-950   py-3 text-white w-[25%]">
             <ul className="">
               {suggestions.map((suggestion) => (
-                <li key={suggestion} className="flex items-center space-x-3 py-1.5 hover:bg-gray-600  cursor-pointer px-2">
+                <li
+                  key={suggestion}
+                  className="flex items-center space-x-3 py-1.5 hover:bg-gray-600  cursor-pointer px-2"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
