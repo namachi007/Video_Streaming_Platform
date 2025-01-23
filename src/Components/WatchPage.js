@@ -10,8 +10,12 @@ export const WatchPage = () => {
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
     console.log(searchParams.get("v"));
+
     
-    
+     useEffect(() => {
+       window.scrollTo(0, 0);
+     }, []);
+
 
     useEffect(() => {
       dispatch(setWatchPage(true));
