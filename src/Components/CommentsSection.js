@@ -1,23 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
+import { GOOGLE_API_KEY } from '../utils/constants';
 
 export const CommentsSection = () => {
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [commentsData, setCommentsData] = useState([]);
+  
 
+  useEffect(() => {
+    ytCommentsFetch();
+  },[])
+
+  const ytCommentsFetch = async() => {
+    console.log(searchParams.get("v"));
+    const data = await fetch(
+      "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=" +
+        searchParams.get("v") +
+        "&key=" + GOOGLE_API_KEY
+    );
+    const json = await data.json();
+    console.log(json.items);
+    setCommentsData(json.items);
+  }
 
 
     const Comment = ({data}) => {
-        const {author, comment} = data;
+
+      const { authorProfileImageUrl, authorDisplayName, textDisplay } =
+        data?.snippet?.topLevelComment?.snippet ; 
+
         return (
           <div className="flex flex-col py-6 ">
             <div className="flex">
               <img
-                src="https://avatars.githubusercontent.com/u/144411164?v=4"
+                src={authorProfileImageUrl}
                 alt="profile"
                 className="w-13    h-12 rounded-full"
               />
               <div className="ml-3">
-                <h1 className="text-white font-bold">{author}</h1>
-                <p className="text-white">{comment}</p>
+                <h1 className="text-white font-bold">{authorDisplayName}</h1>
+                <p className="text-white">{textDisplay}</p>
               </div>
             </div>
 
@@ -75,14 +98,14 @@ export const CommentsSection = () => {
     ];
 
     const CommentsList = ({comments}) => {
-        return comments.map((comment, index) => {
-            return <Comment key={index} data={comment} />;
+        return comments.map((comment) => {
+            return <Comment key={comment.id} data={comment} />;
         });
     }
 
   return (
     <div className="">
-      <CommentsList comments={comments} />
+      <CommentsList comments={commentsData} />
     </div>
   );
 }

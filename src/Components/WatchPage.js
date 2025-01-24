@@ -9,7 +9,6 @@ export const WatchPage = () => {
 
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
-    console.log(searchParams.get("v"));
 
     
      useEffect(() => {
