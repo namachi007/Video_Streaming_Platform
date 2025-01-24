@@ -12,7 +12,7 @@ const isWatchPage = useSelector((state) => state.menu.isWatchPage);
 
 return (
   <div className="flex w-full h-full  bg-black">
-    {isMenuOpen && !isWatchPage && <Sidebar />}
+     <Sidebar />
     {/* <Sidebar /> */}
     <Outlet />
   </div>
