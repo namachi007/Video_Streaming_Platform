@@ -5,20 +5,34 @@ import appStore from "./utils/appStore";
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MainContainer } from "./Components/MainContainer";
 import { WatchPage } from "./Components/WatchPage";
+import { SearchPage } from "./Components/SearchPage";
 
 
-const appRouter = createBrowserRouter([{
-  path: "/",
-  element: <Body />,
-  children: [{
+const appRouter = createBrowserRouter([
+  {
     path: "/",
-    element: <MainContainer />
-  },{
-    path: "/watch",
-    element: <WatchPage />
-  }
-]
-}])
+    element: (
+      <>
+        <Header />
+        <Body />
+      </>
+    ),
+    children: [
+      {
+        path: "/",
+        element: <MainContainer />,
+      },
+      {
+        path: "/watch",
+        element: <WatchPage />,
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
@@ -38,10 +52,12 @@ function App() {
          *
          *
          **/}
-        <Header />
-        <RouterProvider router={appRouter} />
-        
-        
+        {/* <Header />
+        <RouterProvider router={appRouter} /> */}
+
+        <RouterProvider router={appRouter}>
+          
+        </RouterProvider>
       </div>
     </Provider>
   );

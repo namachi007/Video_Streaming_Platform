@@ -1,44 +1,54 @@
-import React, { useEffect, useState } from 'react'
-import {  useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from '../utils/menuSlice';
-import { Link } from 'react-router-dom';
-import { YOUTUBE_SEARCH_API } from '../utils/constants';
-import {catchResults} from "../utils/searchSlice";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMenu } from "../utils/menuSlice";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { catchResults } from "../utils/searchSlice";
 
 export const Header = () => {
   const [search, setSearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const searchCache = useSelector((state) => state.search);
-  
 
-  useEffect(()=> {
+  useEffect(() => {
     const timer = setTimeout(() => {
-      if(searchCache[search]) {
-        setSuggestions(searchCache[search])
+      if (searchCache[search]) {
+        setSuggestions(searchCache[search]);
       } else {
-         getSearch()
+        getSearch();
       }
-    }   
-    ,300); ;
+    }, 300);
 
     return () => clearTimeout(timer);
-  },[search]);
+  }, [search]);
 
   const getSearch = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + search);
     const json = await data.json();
     console.log(json[1]);
     setSuggestions(json[1]);
-    dispatch(catchResults({[search]: json[1]}));
-  }
- 
+    dispatch(catchResults({ [search]: json[1] }));
+  };
 
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
-  }
+  };
+
+  const handleSearchRedirect = () => {
+    if (search.trim()) {
+      navigate(`/search?q=${encodeURIComponent(search)}`);
+      setSuggestions([]);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    navigate(`/search?q=${encodeURIComponent(suggestion)}`);
+    setSuggestions([]);
+    setSearch("");
+  };
 
   return (
     <div className="flex text-white justify-around w-full h-13 py-3 ">
@@ -85,7 +95,10 @@ export const Header = () => {
               onChange={(e) => setSearch(e.target.value)}
             ></input>
           </form>
-          <button className="w-45 bg-slate-800 rounded-r-2xl ">
+          <button
+            className="w-45 bg-slate-800 rounded-r-2xl "
+            onClick={handleSearchRedirect}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="29"
@@ -105,6 +118,7 @@ export const Header = () => {
                 <li
                   key={suggestion}
                   className="flex items-center space-x-3 py-1.5 hover:bg-gray-600  cursor-pointer px-2"
+                  onClick={() => handleSuggestionClick(suggestion)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -246,4 +260,4 @@ export const Header = () => {
       </div>
     </div>
   );
-}
+};

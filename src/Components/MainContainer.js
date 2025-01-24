@@ -1,7 +1,6 @@
-import React from 'react'
-import { Buttonslist } from './Buttonslist'
-import { VideoContainer } from './VideoContainer'
-
+import React from "react";
+import { Buttonslist } from "./Buttonslist";
+import { VideoContainer } from "./VideoContainer";
 
 export const MainContainer = () => {
   return (
@@ -10,4 +9,4 @@ export const MainContainer = () => {
       <VideoContainer />
     </div>
   );
-}
+};
