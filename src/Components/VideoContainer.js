@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { YOUTUBE_VIDEO_API } from "../utils/constants";
 import { VideoCard } from './VideoCard';
 import { Link } from 'react-router-dom';
+import { ShimmerHome } from './ShimmerHome';
 
 export const VideoContainer = () => {
 
@@ -19,7 +20,7 @@ export const VideoContainer = () => {
   }
 
   if(videos.length === 0) {
-    return <div className="w-full h-full flex justify-center items-center text-white">Loading...</div>
+    return  <ShimmerHome />
   }
 
 
