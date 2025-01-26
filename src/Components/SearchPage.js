@@ -10,16 +10,18 @@ export const SearchPage = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
-  console.log(query);
   const [videoData, setVideoData] = useState([]);
   
 
   useEffect(() => {
-    fetchSearchVideos();
-    dispatch(closeMenu());
-  }, []);
+    if(query) {
+      fetchSearchVideos();
+      dispatch(closeMenu());
+    }
+  }, [query]);
 
   const fetchSearchVideos = async () => {
+    try {
     const data = await fetch(
       "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=35&q=" +
         searchParams.get("q") +
@@ -27,9 +29,11 @@ export const SearchPage = () => {
         GOOGLE_API_KEY
     );
     const json = await data.json();
-    console.log(json);
-
     setVideoData(json.items);
+  } 
+    catch (error) {
+    console.error("Error fetching search videos:", error);  
+    }
   };
   
 

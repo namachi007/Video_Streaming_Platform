@@ -6,12 +6,13 @@ export const SearchList = ({ videoData }) => {
     const[channelLogo, setChannellogo] = useState("");
     const snippet = videoData.snippet || {};
     const { title, channelTitle, channelId, thumbnails, description } = snippet;
+     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-       if (videoData) {
-         getChannelLogo();
-       }
-    },[videoData]);
+      if (channelId) {
+        getChannelLogo();
+      }
+    }, [channelId]);
 
     const getChannelLogo = async () => {
         try {
@@ -29,9 +30,12 @@ export const SearchList = ({ videoData }) => {
         } catch (error) {
           console.error("Failed to fetch channel logo:", error);
         }
+        finally {
+          setLoading(false);
+        }
       };
 
-    if (videoData === null) {
+    if (loading) {
         return <div>Loading...</div>;
       }
     

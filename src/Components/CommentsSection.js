@@ -4,24 +4,26 @@ import { GOOGLE_API_KEY } from '../utils/constants';
 
 export const CommentsSection = () => {
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [commentsData, setCommentsData] = useState([]);
   
 
   useEffect(() => {
     ytCommentsFetch();
-  },[])
+  },[searchParams])
 
   const ytCommentsFetch = async() => {
-    console.log(searchParams.get("v"));
+    try{
     const data = await fetch(
       "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=" +
         searchParams.get("v") +
         "&key=" + GOOGLE_API_KEY
     );
     const json = await data.json();
-    console.log(json.items);
     setCommentsData(json.items);
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+  }
   }
 
 
@@ -73,29 +75,6 @@ export const CommentsSection = () => {
           </div>
         );
     };
-
-    const comments = [
-      {
-        author: "Author1",
-        comment:
-          "lorum ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
-      },
-      {
-        author: "Author2",
-        comment:
-          "lorum ipsum dolor sit amet, consectetur adipiscing elit. Nullam ",
-      },
-      {
-        author: "Author3",
-        comment:
-          "lorum ipsum dolor sit amet, consectetur adipiscing elit. Nullam",
-      },
-      {
-        author: "Author4",
-        comment:
-          "lorum ipsum dolor sit amet, consectetur adipiscing elit. Nullam ",
-      },
-    ];
 
     const CommentsList = ({comments}) => {
         return comments.map((comment) => {

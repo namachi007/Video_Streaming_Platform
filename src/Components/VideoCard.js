@@ -1,64 +1,63 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import Image from "react-image";
-import { GOOGLE_API_KEY } from '../utils/constants'; 
+import { GOOGLE_API_KEY } from "../utils/constants";
 
-export const VideoCard = ({info}) => {
-    // console.log(info);
-    const[channelLogo, setChannellogo] = useState("");
+export const VideoCard = ({ info }) => {
+  // console.log(info);
+  const [channelLogo, setChannellogo] = useState("");
 
-  
   useEffect(() => {
-     if (info) {
-       getChannelLogo();
-     }
-  },[info])
+    if (info?.snippet?.channelId) {
+      getChannelLogo();
+    }
+  }, [info?.snippet?.channelId]);
 
   const getChannelLogo = async () => {
-    const data = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
-    );
-    const json = await data.json();
-    // console.log(json);
-    setChannellogo(json?.items[0]?.snippet?.thumbnails?.default?.url);
+    try {
+      const data = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
+      );
+      const json = await data.json();
+      // console.log(json);
+      setChannellogo(json?.items[0]?.snippet?.thumbnails?.default?.url);
+    } catch (error) {
+      console.error("Error fetching channel logo:", error);
+    }
   };
 
   if (!info) {
     return null;
   }
-   const { snippet, statistics } = info;
+  const { snippet, statistics } = info;
+  const { title, channelTitle, thumbnails, channelId, publishedAt } = snippet;
+  const { maxres, high } = thumbnails;
 
-   const { title, channelTitle, thumbnails, channelId, publishedAt } = snippet;
-   const { maxres, high} = thumbnails;
+  const formatViewCount = (viewCount) => {
+    const num = parseInt(viewCount, 10);
+    if (num >= 1_000_000) {
+      return (num / 1_000_000).toFixed(1) + "M";
+    } else if (num >= 1_000) {
+      return (num / 1_000).toFixed(1) + "K";
+    }
+    return num.toString();
+  };
 
-   const formatViewCount = (viewCount) => {
-     const num = parseInt(viewCount, 10);
-     if (num >= 1_000_000) {
-       return (num / 1_000_000).toFixed(1) + "M"; 
-     } else if (num >= 1_000) {
-       return (num / 1_000).toFixed(1) + "K"; 
-     }
-     return num.toString(); 
-   };
+  const getRelativeTime = (publishedAt) => {
+    const publishedDate = new Date(publishedAt);
+    const currentDate = new Date();
 
-   const getRelativeTime = (publishedAt) => {
-     const publishedDate = new Date(publishedAt);
-     const currentDate = new Date();
+    const diffInMonths =
+      (currentDate.getFullYear() - publishedDate.getFullYear()) * 12 +
+      (currentDate.getMonth() - publishedDate.getMonth());
 
-     const diffInMonths =
-       (currentDate.getFullYear() - publishedDate.getFullYear()) * 12 +
-       (currentDate.getMonth() - publishedDate.getMonth());
+    if (diffInMonths < 1) return "Less than a month ago";
+    if (diffInMonths === 1) return "1 month ago";
+    return `${diffInMonths} months ago`;
+  };
 
-     if (diffInMonths < 1) return "Less than a month ago";
-     if (diffInMonths === 1) return "1 month ago";
-     return `${diffInMonths} months ago`;
-   };
+  const relativeTime = getRelativeTime(publishedAt);
 
-   const relativeTime = getRelativeTime(publishedAt);
-
-
-   const formattedViewCount = formatViewCount(statistics?.viewCount);
-
-  
+  const formattedViewCount = formatViewCount(statistics?.viewCount);
 
   return (
     <div className="  w-[100%] ">
@@ -76,7 +75,6 @@ export const VideoCard = ({info}) => {
               src={channelLogo}
               alt="channel_logo"
               className=" rounded-full w-16 h-11"
-              
             />
           </div>
           <div className="pl-3">
@@ -92,4 +90,4 @@ export const VideoCard = ({info}) => {
       </div>
     </div>
   );
-}
+};
