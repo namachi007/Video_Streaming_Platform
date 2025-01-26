@@ -1,45 +1,44 @@
-import React, { useEffect, useState } from 'react'
-import { GOOGLE_API_KEY } from '../utils/constants';
+import React, { useEffect, useState } from "react";
+import { GOOGLE_API_KEY } from "../utils/constants";
+import { ShimmerSearch } from "./ShimmerSearch";
 
 export const SearchList = ({ videoData }) => {
+  const [channelLogo, setChannellogo] = useState("");
+  const snippet = videoData.snippet || {};
+  const { title, channelTitle, channelId, thumbnails, description } = snippet;
+  const [loading, setLoading] = useState(true);
 
-    const[channelLogo, setChannellogo] = useState("");
-    const snippet = videoData.snippet || {};
-    const { title, channelTitle, channelId, thumbnails, description } = snippet;
-     const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (channelId) {
+      getChannelLogo();
+    }
+  }, [channelId]);
 
-    useEffect(() => {
-      if (channelId) {
-        getChannelLogo();
+  const getChannelLogo = async () => {
+    try {
+      const data = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
+      );
+      const json = await data.json();
+      if (json?.items && json.items.length > 0) {
+        setChannellogo(json.items[0].snippet?.thumbnails?.default?.url || "");
+      } else {
+        console.error("No items found in the response");
       }
-    }, [channelId]);
+    } catch (error) {
+      console.error("Failed to fetch channel logo:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const getChannelLogo = async () => {
-        try {
-          const data = await fetch(
-            `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
-          );
-          const json = await data.json();
-          if (json?.items && json.items.length > 0) {
-            setChannellogo(
-              json.items[0].snippet?.thumbnails?.default?.url || ""
-            );
-          } else {
-            console.error("No items found in the response");
-          }
-        } catch (error) {
-          console.error("Failed to fetch channel logo:", error);
-        }
-        finally {
-          setLoading(false);
-        }
-      };
-
-    if (loading) {
-        return <div>Loading...</div>;
-      }
-    
-      
+  if (loading) {
+    return (
+      <div>
+        <ShimmerSearch />
+      </div>
+    );
+  }
 
   return (
     <div className="pb-4 cursor-pointer">

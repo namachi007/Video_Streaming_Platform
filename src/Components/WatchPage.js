@@ -1,30 +1,26 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { closeMenu, closeWatchPage, setWatchPage } from '../utils/menuSlice';
-import { useSearchParams } from 'react-router-dom';
-import { CommentContainer } from './CommentContainer';
-import { LiveChat } from './LiveChat';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { closeMenu, closeWatchPage, setWatchPage } from "../utils/menuSlice";
+import { useSearchParams } from "react-router-dom";
+import { CommentContainer } from "./CommentContainer";
+import { LiveChat } from "./LiveChat";
 
 export const WatchPage = () => {
+  const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
 
-    const dispatch = useDispatch();
-    const [searchParams] = useSearchParams();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    
-     useEffect(() => {
-       window.scrollTo(0, 0);
-     }, []);
+  useEffect(() => {
+    dispatch(setWatchPage(true));
+    // dispatch(closeMenu());
 
-
-    useEffect(() => {
-      dispatch(setWatchPage(true));
-        // dispatch(closeMenu());
-
-        return () => {
-          dispatch(setWatchPage(false));
-        }
-        
-    },[dispatch])
+    return () => {
+      dispatch(setWatchPage(false));
+    };
+  }, [dispatch]);
 
   return (
     <div>
@@ -42,11 +38,11 @@ export const WatchPage = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <div className='w-96 ml-10 h-[500px]'>
+        <div className="w-96 ml-10 h-[500px]">
           <LiveChat />
         </div>
       </div>
       <CommentContainer />
     </div>
   );
-}
+};
