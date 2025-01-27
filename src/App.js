@@ -44,20 +44,30 @@ function App() {
          *
          * Header of our project
          * Body
-         *   Side bar(Menu Items)
-         *   Main Container
-         *      BUTTON LIST
-         *      Video container
-         *        Video cards
+         *   /Home Page
+         *    Side bar(Menu Items)
+         *    Main Container
+         *        Button list
+         *        Video container
+         *          -Video cards
+         *
+         *   /Watch Page
+         *    Video Player
+         *    Comments
+         *    Live Chat
+         *   
+         * 
+         *   /Search Page
+         *    Search List
+         *
+         *
          *
          *
          **/}
         {/* <Header />
         <RouterProvider router={appRouter} /> */}
 
-        <RouterProvider router={appRouter}>
-          
-        </RouterProvider>
+        <RouterProvider router={appRouter}></RouterProvider>
       </div>
     </Provider>
   );
