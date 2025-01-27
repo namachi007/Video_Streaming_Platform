@@ -18,7 +18,7 @@ export const VideoCard = ({ info }) => {
         `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
       );
       const json = await data.json();
-      // console.log(json);
+      console.log(json);
       setChannellogo(json?.items[0]?.snippet?.thumbnails?.default?.url);
     } catch (error) {
       console.error("Error fetching channel logo:", error);
@@ -70,11 +70,11 @@ export const VideoCard = ({ info }) => {
           />
         </div>
         <div className="flex pt-2">
-          <div className="pl-2  ">
+          <div className="pl-2 w-20 h-20">
             <img
               src={channelLogo}
               alt="channel_logo"
-              className=" rounded-full w-16 h-11"
+              className=" rounded-full w-12 h-12 "
             />
           </div>
           <div className="pl-3">
