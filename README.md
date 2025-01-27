@@ -47,7 +47,7 @@ This project is a functional YouTube clone that mimics some of the core features
 
 ## Live Demo
 
-[YouTube Clone Live](https://youtubeclone-f85nfouj7-namasivayam-ms-projects.vercel.app/)
+[YouTube Clone Live](https://youtubeclone-phi-one.vercel.app/)
 
 ## How to Clone and Run
 
