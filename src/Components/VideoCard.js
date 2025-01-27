@@ -18,7 +18,6 @@ export const VideoCard = ({ info }) => {
         `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
       );
       const json = await data.json();
-      console.log(json);
       setChannellogo(json?.items[0]?.snippet?.thumbnails?.default?.url);
     } catch (error) {
       console.error("Error fetching channel logo:", error);

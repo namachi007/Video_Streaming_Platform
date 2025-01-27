@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# YouTube Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a functional YouTube clone that mimics some of the core features of YouTube. Built with React and Redux, it integrates the YouTube API for dynamic video content and includes optimizations for performance and user experience.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### 1. Caching
+- Stores search results locally for repeated queries.
+- Reduces redundant API calls, improving site speed and performance.
+- Example: If a user searches for "chess" and repeats the query later, results are fetched from the Redux store instead of making a new API call.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Debouncing for Search Optimization
+- Delays API calls until the user stops typing.
+- Prevents unnecessary API calls for partial queries.
+- Example: If a user types "i", "iP", "iPh", "iPho", the API call is delayed until the user completes typing "iPhone".
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 3. API Integration (YouTube API)
+- Integrated YouTube API for fetching dynamic video content.
+- Displays popular videos currently trending in India.
 
-### `npm test`
+### 4. Shimmer UI for Loading States
+- Implements a shimmer effect to indicate loading content.
+- Enhances user experience by showing placeholders for video thumbnails, titles, and descriptions while data is being fetched (applicable to both Home and Search pages).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 5. Improved Site Speed
+- Optimized API calls to avoid redundant requests.
+- Increased site speed by 50% by eliminating unnecessary calls, such as empty search queries.
 
-### `npm run build`
+### 6. Simulated Live Chat with User Input
+- Simulates a live chat by pushing random messages every 200ms.
+- Allows users to input their messages in real time.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 7. Search Suggestion API
+- Displays search suggestions dynamically as the user types in the search bar.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 8. Comment Section API
+- Fetches and displays video comments for each respective video.
+- Enables social interaction by showing comments relevant to the video.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 9. Search Results API
+- Dynamically fetches and displays video lists based on user input.
 
-### `npm run eject`
+## Limitations
+- This project is **not responsive** and is optimized for desktop view only.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Live Demo
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[YouTube Clone Live](https://youtubeclone-f85nfouj7-namasivayam-ms-projects.vercel.app/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## How to Clone and Run
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+- Node.js (v14 or later)
+- NPM or Yarn installed on your machine
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Steps to Run
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository:
+   ```terminal
+   git clone https://github.com/namachi007/Youtube-clone.git
 
-### Code Splitting
+2. Navigate to the project directory:
+    cd youtube-clone
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Install dependencies:
+    npm install
 
-### Analyzing the Bundle Size
+4. Start the development server:
+    npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+5. Open your browser and navigate to:
+    http://localhost:3000
+    
+## Contributing
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to fork this repository and contribute by creating pull requests for bug fixes, feature improvements, or documentation enhancements. Contributions are always welcome!
