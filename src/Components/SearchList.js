@@ -7,6 +7,7 @@ export const SearchList = ({ videoData }) => {
   const snippet = videoData.snippet || {};
   const { title, channelTitle, channelId, thumbnails, description } = snippet;
   const [loading, setLoading] = useState(true);
+  console.log(thumbnails);
 
   useEffect(() => {
     if (channelId) {
@@ -45,7 +46,7 @@ export const SearchList = ({ videoData }) => {
       <div className="flex space-x-4">
         <img
           className=" w-[500px] rounded-xl"
-          src={thumbnails?.medium?.url}
+          src={thumbnails?.high?.url}
           alt="thumbnail"
         />
         <div>
