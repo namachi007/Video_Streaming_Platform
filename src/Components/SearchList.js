@@ -44,13 +44,13 @@ export const SearchList = ({ videoData }) => {
     <div className="pb-4 cursor-pointer">
       <div className="lg:flex lg:flex-row flex flex-col flex space-x-4">
         <img
-          className=" w-[500px] rounded-xl"
+          className="lg:mr-4 mr-0 w-[500px] rounded-xl"
           src={thumbnails?.high?.url}
           alt="thumbnail"
         />
-        <div>
+        <div className="m-0">
           <h1 className="lg:text-lg font-semibold ">{title}</h1>
-          <div className="flex items-center space-x-2 pt-3">
+          <div className="flex items-center space-x-2 lg:pt-3 pt-2">
             <img
               className="w-8 rounded-full"
               src={channelLogo}
@@ -59,7 +59,7 @@ export const SearchList = ({ videoData }) => {
             <h2 className="text-sm text-gray-400">{channelTitle}</h2>
           </div>
 
-          <p className="text-sm pt-3 text-gray-400">{description}</p>
+          <p className="text-sm lg:pt-3 pt-2 text-gray-400">{description}</p>
         </div>
       </div>
     </div>

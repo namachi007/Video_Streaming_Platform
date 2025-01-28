@@ -36,7 +36,7 @@ export const SearchPage = () => {
   
 
   return (
-    <div className="w-[483px] lg:w-full">
+    <div className="w-[412px] lg:w-full">
       <div className="lg:pl-5">
         <Buttonslist />
       </div>
