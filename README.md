@@ -42,8 +42,9 @@ This project is a functional YouTube clone that mimics some of the core features
 ### 9. Search Results API
 - Dynamically fetches and displays video lists based on user input.
 
-## Limitations
-- This project is **not responsive** and is optimized for desktop view only.
+### 10. Responsiveness
+- The app is now fully responsive, optimized for both desktop and mobile views.
+- Ensures a seamless experience across various screen sizes using Tailwind CSS.
 
 ## Live Demo
 

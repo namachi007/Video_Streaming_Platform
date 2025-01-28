@@ -31,7 +31,7 @@ export const VideoContainer = () => {
         <Link
           key={video.id}
           to={"/watch?v=" + video.id}
-          className="lg:w-[31.5%] lg:mr-4 lg:my-4 my-3"
+          className="lg:w-[31.5%] lg:mr-6 lg:my-4 my-3"
         >
           <VideoCard info={video} />
         </Link>
