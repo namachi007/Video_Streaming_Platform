@@ -61,11 +61,11 @@ export const VideoCard = ({ info }) => {
   return (
     <div className="  w-[100%] ">
       <div className="">
-        <div className=" rounded-lg h-auto ">
+        <div className=" lg:rounded-lg h-auto ">
           <img
             src={maxres?.url || high?.url}
             alt="video_thumbnail"
-            className="rounded-lg w-[410px] h-[240px] "
+            className="lg:rounded-lg lg:w-[410px] lg:h-[240px] "
           />
         </div>
         <div className="flex pt-2">
@@ -76,9 +76,9 @@ export const VideoCard = ({ info }) => {
               className=" rounded-full w-12 h-12 "
             />
           </div>
-          <div className="pl-3">
+          <div className="lg:pl-3 pl-1">
             <ul>
-              <li className="font-semibold">{title}</li>
+              <li className="font-semibold lg-text-md text-sm">{title}</li>
               <li className="text-sm pt-1 text-gray-400">{channelTitle}</li>
               <li className="text-sm  text-gray-400">
                 {formattedViewCount} views ~ {relativeTime}

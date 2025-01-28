@@ -3,8 +3,8 @@ import { Button } from './Button'
 
 export const Buttonslist = () => {
   return (
-    <div className="bg-black ">
-      <button className="font-semibold bg-white text-black px-[10px] py-[5px] rounded-lg text-sm">
+    <div className="bg-black flex overflow-x-scroll scrollbar-hide pl-2 lg:pl-0 lg:h-10 h-8 ">
+      <button className="font-semibold bg-white text-black  whitespace-nowrap flex-shrink-0 lg:h-10 text-[12px] px-[10px] py-[5px] rounded-lg lg:text-sm">
         All
       </button>
       <Button name={"Programming"} />

@@ -23,22 +23,24 @@ export const WatchPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div className="px-28 flex">
-        <div>
-          <iframe
-            width="910"
-            height="500"
-            src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-            className="rounded-2xl"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          ></iframe>
+    <div className="">
+      <div className="lg:px-28  flex">
+        <div className="w-full lg:w-[910px]">
+          <div className="relative w-full">
+            <iframe
+              // width="910"
+              // height="500"
+              src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+              className="  lg:h-[500px] lg:w-[910px] w-[482px] h-[320px] lg:rounded-2xl"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
-        <div className="w-96 ml-10 h-[500px]">
+        <div className=" hidden lg:block w-96 ml-10 h-[500px]">
           <LiveChat />
         </div>
       </div>

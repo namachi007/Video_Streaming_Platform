@@ -50,11 +50,11 @@ export const Header = () => {
   };
 
   return (
-    <div className="flex text-white justify-around w-full h-13 py-3 ">
-      <div className="Youtube  w-1/3  flex space-x-1 pl-9 mt-1 ">
+    <div className="flex text-white justify-around w-full h-13 md:py-3 py-2">
+      <div className="Youtube  lg:w-1/3 w-[25%]  flex space-x- lg:pl-9 mt-1 ">
         <div
           onClick={toggleMenuHandler}
-          className="mr-4 cursor-pointer hover:bg-gray-800 h-8 rounded-xl text-center w-8 p-2  "
+          className="lg:mr-4  cursor-pointer hover:bg-gray-800 h-8 rounded-xl text-center w-8 p-2  "
         >
           <img
             src="/hamburger-menu.ico"
@@ -75,14 +75,14 @@ export const Header = () => {
             />
           </div>
 
-          <div className="text-white text-lg  font-semibold  cursor-pointer">
+          <div className="text-white lg:text-lg   font-semibold  cursor-pointer">
             {" "}
             YouTube
           </div>
         </a>
       </div>
 
-      <div className="searchInput w-1/3 ">
+      <div className="searchInput lg:w-1/3 lg:ml-0 ml-6 w-[60%]  ">
         <div className="flex">
           <form className="w-[75%] " role="search">
             <input
@@ -111,7 +111,7 @@ export const Header = () => {
           </button>
         </div>
         {suggestions.length === 0 ? null : (
-          <div className="absolute searchResults rounded-2xl bg-gray-950   py-3 text-white w-[25%]">
+          <div className="absolute searchResults rounded-2xl bg-gray-950   lg:py-3 py-1 text-white lg:w-[25%] w-[50%] ">
             <ul className="">
               {suggestions.map((suggestion) => (
                 <li
@@ -138,9 +138,9 @@ export const Header = () => {
         )}
       </div>
 
-      <div className="userIcon w-1/3 flex justify-end ">
-        <div className="flex space-x-3">
-          <div>
+      <div className="userIcon lg:w-1/3 w-[15%] flex justify-end ">
+        <div className="flex lg:space-x-3">
+          <div className="hidden lg:block">
             <button className="bg-gray-900 hover:bg-gray-700 text-white px-4 py-2 rounded-2xl flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -160,12 +160,12 @@ export const Header = () => {
             </button>
           </div>
 
-          <div className="w-32 mt-0.5 cursor-pointer ">
+          <div className="lg:w-32 w-16 mt-0.5 cursor-pointer ">
             <img
               src="/bell_icon.ico"
               alt="Bellicon"
-              className="mr-2"
-              width="34"
+              className="lg:mr-2"
+              width="30"
               height="0"
             />
           </div>

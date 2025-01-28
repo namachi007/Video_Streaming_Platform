@@ -38,12 +38,12 @@ export const SearchPage = () => {
   
 
   return (
-    <div>
-      <div className="pl-5">
+    <div className="w-[483px] lg:w-full">
+      <div className="lg:pl-5">
         <Buttonslist />
       </div>
 
-      <div className="pt-8 pl-5">
+      <div className="lg:pt-8  lg:pl-5">
         {videoData
           .filter((video) => video.id.kind === "youtube#video")
           .map((video) => (

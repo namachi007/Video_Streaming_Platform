@@ -38,11 +38,11 @@ export const CommentsSection = () => {
               <img
                 src={authorProfileImageUrl}
                 alt="profile"
-                className="w-13    h-12 rounded-full"
+                className="lg:w-13 lg:h-10 w-10 h-10 rounded-full"
               />
               <div className="ml-3">
-                <h1 className="text-white font-bold">{authorDisplayName}</h1>
-                <p className="text-white">{textDisplay}</p>
+                <h1 className="text-white font-bold ">{authorDisplayName}</h1>
+                <p className="text-white lg:text-md text-sm">{textDisplay}</p>
               </div>
             </div>
 

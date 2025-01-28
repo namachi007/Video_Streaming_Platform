@@ -13,26 +13,24 @@ export const Sidebar = () => {
 
    if( !isMenuopen ) {
     return (
-      <div className="w-[7%] h-[100%] px-1">
+      <div className="w-[7%] h-[100%] px-1 hidden lg:block">
         <div className=" h-[100%]  px-3">
           <ul>
             <Link to="/">
-            <li className="py-1 mr-1 my-2 text-[10px] cursor-pointer flex flex-col  justify-center items-center space- hover:bg-gray-800 p-1 rounded-xl">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="22"
-                fill="currentColor"
-                class="bi bi-house-door-fill"
-                viewBox="0 0 16 16"
-              >
-                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
-              </svg>
+              <li className="py-1 mr-1 my-2 text-[10px] cursor-pointer flex flex-col  justify-center items-center space- hover:bg-gray-800 p-1 rounded-xl">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="22"
+                  fill="currentColor"
+                  class="bi bi-house-door-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+                </svg>
 
-              <span>
-                Home
-              </span>
-            </li>
+                <span>Home</span>
+              </li>
             </Link>
             <li className="py-1 mr-1 my-2  text-[10px] cursor-pointer flex flex-col  justify-center items-center space- hover:bg-gray-800 p-1 rounded-xl">
               <img
@@ -62,7 +60,7 @@ export const Sidebar = () => {
 
    
   return (
-    <div className=" w-[14%] px-3 h-[100%]">
+    <div className=" w-[14%] px-3 h-[100%] hidden lg:block">
       <div className=" h-[100%]  px-3">
         <ul className="py-">
           <Link to="/">
