@@ -54,7 +54,7 @@ export const Header = () => {
       <div className="Youtube  lg:w-1/3 w-[25%]  flex space-x- lg:pl-9 mt-1 ">
         <div
           onClick={toggleMenuHandler}
-          className="lg:mr-4  cursor-pointer hover:bg-gray-800 h-8 rounded-xl text-center w-8 p-2  "
+          className="lg:mr-4  cursor-pointer hover:bg-gray-800 h-8 rounded-xl text-center lg:w-8 lg:p-2 w-1  "
         >
           <img
             src="/hamburger-menu.ico"
@@ -82,7 +82,7 @@ export const Header = () => {
         </a>
       </div>
 
-      <div className="searchInput lg:w-1/3 lg:ml-0 ml-6 w-[60%]  ">
+      <div className="searchInput lg:w-1/3 lg:ml-0 ml-10 w-[89%]  ">
         <div className="flex">
           <form className="w-[75%] " role="search">
             <input
@@ -138,7 +138,7 @@ export const Header = () => {
         )}
       </div>
 
-      <div className="userIcon lg:w-1/3 w-[15%] flex justify-end ">
+      <div className="userIcon lg:w-1/3 w-[13%]  flex justify-end ">
         <div className="flex lg:space-x-3">
           <div className="hidden lg:block">
             <button className="bg-gray-900 hover:bg-gray-700 text-white px-4 py-2 rounded-2xl flex items-center">
@@ -164,7 +164,7 @@ export const Header = () => {
             <img
               src="/bell_icon.ico"
               alt="Bellicon"
-              className="lg:mr-2"
+              className="lg:mr-2  hidden lg:block "
               width="30"
               height="0"
             />
@@ -188,7 +188,7 @@ export const Header = () => {
               </a>
               <div class="dropdown text-end  ">
                 <button
-                  className="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                  className="d-block  link-body-emphasis text-decoration-none dropdown-toggle"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
@@ -200,9 +200,9 @@ export const Header = () => {
                     className="rounded-circle"
                   />
                 </button>
-                <ul className="dropdown-menu text-small bg-slate-800 text-white   ">
+                <ul className="dropdown-menu text-sm lg:text-md bg-slate-800 text-white   ">
                   <li>
-                    <a className="dropdown-item text-white hover:bg-slate-700">
+                    <a className="dropdown-item text-white hover:bg-slate-700 ">
                       Google Account
                     </a>
                   </li>
