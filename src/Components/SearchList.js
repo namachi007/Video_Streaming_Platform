@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { GOOGLE_API_KEY } from "../utils/constants";
 import { ShimmerSearch } from "./ShimmerSearch";
+import fetchFromApi from "../utils/api";
 
 export const SearchList = ({ videoData }) => {
   const [channelLogo, setChannellogo] = useState("");
   const snippet = videoData.snippet || {};
   const { title, channelTitle, channelId, thumbnails, description } = snippet;
   const [loading, setLoading] = useState(true);
-  console.log(thumbnails);
 
   useEffect(() => {
     if (channelId) {
@@ -17,10 +17,9 @@ export const SearchList = ({ videoData }) => {
 
   const getChannelLogo = async () => {
     try {
-      const data = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
+      const json = await fetchFromApi(
+        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}`
       );
-      const json = await data.json();
       if (json?.items && json.items.length > 0) {
         setChannellogo(json.items[0].snippet?.thumbnails?.default?.url || "");
       } else {

@@ -4,6 +4,8 @@ import { YOUTUBE_VIDEO_API } from "../utils/constants";
 import { VideoCard } from './VideoCard';
 import { Link } from 'react-router-dom';
 import { ShimmerHome } from './ShimmerHome';
+import fetchFromApi from "../utils/api";
+
 
 export const VideoContainer = () => {
 
@@ -14,8 +16,9 @@ export const VideoContainer = () => {
   },[]);
 
   const getVideos = async() => {
-    const data = await fetch(YOUTUBE_VIDEO_API);
-    const json = await data.json();
+    const json = await fetchFromApi(
+      `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN`
+    );
     setVideos(json.items)
   }
 

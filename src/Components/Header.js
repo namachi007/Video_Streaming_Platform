@@ -4,6 +4,8 @@ import { toggleMenu } from "../utils/menuSlice";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { catchResults } from "../utils/searchSlice";
+import fetchFromApi from "../utils/api";
+
 
 export const Header = () => {
   const [search, setSearch] = useState("");

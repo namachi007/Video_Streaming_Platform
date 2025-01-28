@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { GOOGLE_API_KEY } from '../utils/constants';
+import fetchFromApi from "../utils/api";
 
 export const CommentsSection = () => {
 
@@ -14,12 +15,10 @@ export const CommentsSection = () => {
 
   const ytCommentsFetch = async() => {
     try{
-    const data = await fetch(
-      "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=" +
-        searchParams.get("v") +
-        "&key=" + GOOGLE_API_KEY
+    const json = await fetchFromApi(
+      `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=` +
+        searchParams.get("v")
     );
-    const json = await data.json();
     setCommentsData(json.items);
   } catch (error) {
     console.error("Error fetching comments:", error);

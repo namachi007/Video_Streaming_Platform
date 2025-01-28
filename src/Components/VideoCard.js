@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "react-image";
 import { GOOGLE_API_KEY } from "../utils/constants";
+import fetchFromApi from "../utils/api";
 
 export const VideoCard = ({ info }) => {
   // console.log(info);
@@ -14,10 +15,9 @@ export const VideoCard = ({ info }) => {
 
   const getChannelLogo = async () => {
     try {
-      const data = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
+      const json = await fetchFromApi(
+        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}`
       );
-      const json = await data.json();
       setChannellogo(json?.items[0]?.snippet?.thumbnails?.default?.url);
     } catch (error) {
       console.error("Error fetching channel logo:", error);

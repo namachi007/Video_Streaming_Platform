@@ -5,6 +5,7 @@ import { closeMenu } from "../utils/menuSlice";
 import { useDispatch } from "react-redux";
 import { Buttonslist } from "./Buttonslist";
 import { SearchList } from "./SearchList";
+import fetchFromApi from "../utils/api";
 
 export const SearchPage = () => {
   const dispatch = useDispatch();
@@ -22,13 +23,10 @@ export const SearchPage = () => {
 
   const fetchSearchVideos = async () => {
     try {
-    const data = await fetch(
-      "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=35&q=" +
-        searchParams.get("q") +
-        "&key=" +
-        GOOGLE_API_KEY
+    const json = await fetchFromApi(
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=` +
+        searchParams.get("q")
     );
-    const json = await data.json();
     setVideoData(json.items);
   } 
     catch (error) {
