@@ -28,10 +28,18 @@ export const Header = () => {
   }, [search]);
 
   const getSearch = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_API + search);
+    if (!search.trim()) return;
+    const target_url = YOUTUBE_SEARCH_API + search;
+   const proxyUrl = `https://thingproxy.freeboard.io/fetch/${target_url}`;
+   try{
+   const data = await fetch(proxyUrl);
     const json = await data.json();
     setSuggestions(json[1]);
     dispatch(catchResults({ [search]: json[1] }));
+  }
+    catch (error) {
+    console.error("Error fetching suggestions:", error);
+  }
   };
 
   const toggleMenuHandler = () => {

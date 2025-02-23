@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        whiteTransparent: "rgba(255, 255, 255, 0.1)", 
+        whiteTransparent: "rgba(255, 255, 255, 0.1)",
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 };
 

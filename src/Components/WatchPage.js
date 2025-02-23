@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { closeMenu, closeWatchPage, setWatchPage } from "../utils/menuSlice";
+import { setWatchPage } from "../utils/menuSlice";
 import { useSearchParams } from "react-router-dom";
 import { CommentContainer } from "./CommentContainer";
 import { LiveChat } from "./LiveChat";
@@ -15,7 +15,6 @@ export const WatchPage = () => {
 
   useEffect(() => {
     dispatch(setWatchPage(true));
-    // dispatch(closeMenu());
 
     return () => {
       dispatch(setWatchPage(false));
@@ -23,15 +22,14 @@ export const WatchPage = () => {
   }, [dispatch]);
 
   return (
-    <div className="">
-      <div className="lg:px-28  flex">
+    <div className="lg:px-28">
+      <div className="flex flex-col lg:flex-row">
+        {/* Video Container */}
         <div className="w-full lg:w-[910px]">
-          <div className="relative w-full">
+          <div className="relative w-full aspect-w-16 aspect-h-9 lg:rounded-2xl overflow-hidden">
             <iframe
-              // width="910"
-              // height="500"
               src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-              className="  lg:h-[500px] lg:w-[910px] w-[482px] h-[320px] lg:rounded-2xl"
+              className="absolute top-0 left-0 w-full h-full"
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -40,10 +38,14 @@ export const WatchPage = () => {
             ></iframe>
           </div>
         </div>
-        <div className=" hidden lg:block w-96 ml-10 h-[500px]">
+
+        {/* Live Chat */}
+        <div className="hidden lg:block w-96 ml-10 h-[500px]">
           <LiveChat />
         </div>
       </div>
+
+      {/* Comments Section */}
       <CommentContainer />
     </div>
   );
