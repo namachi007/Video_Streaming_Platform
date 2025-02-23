@@ -29,10 +29,9 @@ export const Header = () => {
 
   const getSearch = async () => {
     if (!search.trim()) return;
-    const target_url = YOUTUBE_SEARCH_API + search;
-   const proxyUrl = `https://thingproxy.freeboard.io/fetch/${target_url}`;
+    const apiUrl = `/api/search-suggestions?q=${encodeURIComponent(search)}`;
    try{
-   const data = await fetch(proxyUrl);
+   const data = await fetch(apiUrl);
     const json = await data.json();
     setSuggestions(json[1]);
     dispatch(catchResults({ [search]: json[1] }));
