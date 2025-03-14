@@ -1,4 +1,4 @@
-# YouTube Clone
+# Video Streaming Platform
 
 ## Overview
 
@@ -48,7 +48,7 @@ This project is a functional YouTube clone that mimics some of the core features
 
 ## Live Demo
 
-[YouTube Clone Live](https://youtubeclone-phi-one.vercel.app/)
+[Live](https://youtubeclone-phi-one.vercel.app/)
 
 ## How to Clone and Run
 
