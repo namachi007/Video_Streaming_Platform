@@ -61,7 +61,7 @@ This project is a functional YouTube clone that mimics some of the core features
 
 1. Clone the repository:
    ```terminal
-   git clone https://github.com/namachi007/Youtube-clone.git
+   git clone https://github.com/namachi007/Video_Streaming_Platform.git
 
 2. Navigate to the project directory:
     cd youtube-clone
